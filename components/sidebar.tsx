@@ -9,23 +9,18 @@ const Sidebar = ({ guilds }) => {
     console.log("🚀 ~ file: sidebar.js ~ line 6 ~ Sidebar ~ guilds", guilds)
     return (
         <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-gray-900 text-white shadow-lg">
-            { guilds.map((data, id) => {
+            { guilds.map((data, id: number) => {
                 const guild_icon = data.icon == null ? null: `https://cdn.discordapp.com/icons/${data.id}/${data.icon}.webp?size=96`
-                return(<SideBarIcon key={id} guild_icon={guild_icon} name={data.name}/>)
-            })
+                return(<SideBarIcon key={id} guild_icon={guild_icon} name={data.name}/>)})
             }
         </div>
     )
 }
 
-
 const SideBarIcon = ({ name, guild_icon}) => (
     <div className="sidebar-icon group">
-    {/* <img src={icon} alt={name}/> */}{console.log(guild_icon)}
-    
     {guild_icon == null ? <FiMessageCircle size="20"/>: <Image className="rounded-full" src={guild_icon} alt={name} width={100} height={100}/>}
-    
-      <span class="sidebar-tooltip group-hover:scale-100">
+      <span className="sidebar-tooltip group-hover:scale-100">
         {name}
       </span>
     </div>
