@@ -1,4 +1,7 @@
 import Sidebar from "../components/sidebar";
+import Channelbar from "../components/channels";
+import Serverinfo from "../components/info";
+import Chatbar from "../components/chat";
 
 export default function Panel( {  status, guilds } ){
     if (status !== 200 ) {
@@ -6,22 +9,24 @@ export default function Panel( {  status, guilds } ){
     }
     return (<>
     <div className="flex">
-        <h2></h2>
         <Sidebar guilds={guilds}/>
+        <Channelbar guild={guilds[0]}/>
+        <Chatbar/>
+        <Serverinfo/>
     </div>
     </>)
 } 
 
 
 export async function getServerSideProps(context){
+    console.log("🚀 ~ file: panel.tsx ~ line 22 ~ getServerSideProps ~ context", context.ctx)
     var status = 200;
-
-    const guildsFetch = await fetch(process.env.BASE_URL + `/users/@me/guilds`, {
+    const guildsFetch = await fetch(process.env.DISCORD_API_BASE_URL + `/users/@me/guilds`, {
         // Function which fetches bot Servers
         method: "get",
         headers: { Authorization: `Bot ${process.env.TOKEN}`}
     })
-        
+    
     if (guildsFetch.status !== 200) {
         console.log('Error while fetching bot guilds!')
         console.log(`Error code: ${guildsFetch.status}`)
@@ -29,7 +34,6 @@ export async function getServerSideProps(context){
     }
 
     const guilds = await guildsFetch.json()
-
     return {
         props : { status, guilds }
     }
