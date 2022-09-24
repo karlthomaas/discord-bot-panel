@@ -6,7 +6,7 @@
   .sidebar-icon {
     @apply relative flex items-center justify-center 
     h-12 w-12 mt-2 mb-2 mx-auto  
-  bg-gray-400 hover:bg-green-600 dark:bg-gray-800 
+  bg-gray-400 dark:bg-gray-800 
   text-green-500 hover:text-white
     hover:rounded-xl rounded-3xl
     transition-all duration-300 ease-linear
@@ -25,4 +25,37 @@
     border border-gray-200 dark:border-gray-800 rounded-full
     mx-2;
   }
+
+  .channelbar{
+    @apply w-60 h-screen m-0 ml-16 bg-gray-600 overflow-hidden
+  }
+}
+
+  .server-info-bar{
+    @apply w-64 h-screen m-0 bg-gray-600 fixed top-0 right-0
+  }
+  
+  .channel{
+    @apply flex flex-row px-3 py-1 mx-1 hover:bg-gray-100 hover:rounded-md hover:text-white text-gray-150 cursor-pointer
+  }
+
+  
+  @layer utilities {
+    .scrollbar::-webkit-scrollbar {
+      width: 5px;
+      background:'#202225',
+    }
+  
+    .scrollbar::-webkit-scrollbar-thumb {
+      background: #202225;
+      border-radius: 100vh;
+      border: 0px solid #f6f7ed;
+    }
+  
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #202225;
+    }
+  }
+body {
+  background-color: #36393F;
 }
