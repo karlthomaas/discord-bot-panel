@@ -19,7 +19,6 @@ export default function Panel( {  status, guilds } ){
 
 
 export async function getServerSideProps(context){
-    console.log("🚀 ~ file: panel.tsx ~ line 22 ~ getServerSideProps ~ context", context.ctx)
     var status = 200;
     const guildsFetch = await fetch(process.env.DISCORD_API_BASE_URL + `/users/@me/guilds`, {
         // Function which fetches bot Servers
