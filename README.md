@@ -1,20 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Discord Bot Panel
 
-First, run the development server:
+Website where you can log in as a Bot and have a similar UI like in normal Discord.
+This Project is being built using NextJS, Tailwindcss and mainly Typescript. 
+
+This project is made solely for my learning purposes only (so might be buggy).
+
+
+TODO:
+
+✅ Server side bar - Clickable Server Icons 
+
+🟡 Channel bar
+ 
+* ✅ Fetch Voice channels, Text channels & Categorys
+
+* ✅ Display them on Sidebar
+
+* ❌ Categories are not collapsable
+
+* ❌ Channels are in unorganized order
+
+
+🟡 Message input
+
+ * ✅ Design
+
+ * 🟡 Not functional
+
+❌ Channel Chat
+
+* ❌ Fetch up to 50 messages
+
+* ❌ Connect with Discord's Message Gateaway
+
+
+
+
+## Environment Variables
+
+DISCORD_API_BASE_URL = https://discord.com/api/v10
+
+
+NEXT_PUBLIC_WEBPAGE_BASE_URL = http://localhost:3000/
+
+
+TOKEN = <Discord bot token>
+
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/karlthomaas/discord-bot-panel
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  cd discord-bot-banel
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Set environmental Variables in .env.local
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+DISCORD_API_BASE_URL = https://discord.com/api/v10
+
+
+NEXT_PUBLIC_WEBPAGE_BASE_URL = http://localhost:3000/
+
+
+TOKEN = <Discord bot token>
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
+## Authors
+
+- [@karlthomaas](https://github.com/karlthomaas)
 
