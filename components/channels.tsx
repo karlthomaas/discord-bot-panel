@@ -1,8 +1,7 @@
 import { ImVolumeMedium } from "react-icons/im"
 import { BiHash } from "react-icons/bi"
 
-const Channelbar = ({ guild}) => {
-    
+export function Channelbar({ guild, channels }) {
     /* 
     Channels and their type ID's from Discord API
     ---------------------------------------------
@@ -13,9 +12,12 @@ const Channelbar = ({ guild}) => {
     */
     return(
         <div className="channelbar">
-            <div className="pl-6 mt-3 mb-3 text-white font-medium">Guild Name</div>
+            <div className="pl-6 mt-3 mb-3 text-white font-medium">{guild.name}</div>
                 <Divider/>
             <div className="flex flex-col h-screen overflow-y-auto scrollbar">
+                { channels.response.map((data, id: number) => {
+                    return <Channel key={id} type={data.type} name={data.name}/>
+                })}
                 <Channel type={0} name="Tekstkan asdasd asd asd asal 1"/>
                 <Channel type={2} name="Helikanal 1"/>
             </div>
