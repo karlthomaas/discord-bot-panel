@@ -1,26 +1,28 @@
 import { FiMessageCircle } from "react-icons/fi";
 import Image from 'next/image'
 
-const Sidebar = ({ guilds }) => {
-    console.log("🚀 ~ file: sidebar.js ~ line 6 ~ Sidebar ~ guilds", guilds)
+const Sidebar = ({ guilds, changeGuild }) => {
     return (
         <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-gray-900 text-white shadow-lg">
             { guilds.map((data, id: number) => {
                 const guild_icon = data.icon == null ? null: `https://cdn.discordapp.com/icons/${data.id}/${data.icon}.webp?size=96`
-                return(<SideBarIcon key={id} guild_icon={guild_icon} name={data.name} guild_id={undefined}/>)})
+                return(<SideBarIcon key={id} guild_icon={guild_icon} data={data} changeGuild={changeGuild}/>)})
             }
         </div>
     )
 }
 
-const SideBarIcon = ({ name, guild_icon, guild_id}) => (
+const SideBarIcon = ({ guild_icon, data, changeGuild}) => {
+
+  return (
     <div className="sidebar-icon group">
-    {guild_icon == null ? <FiMessageCircle size="20"/>: <a href={process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/panel/${guild_id}/`} ><Image className="sidebar-icon" src={guild_icon} alt={name} width={100} height={100}/></a>}
+    {guild_icon == null ? <FiMessageCircle size="20"/>: <a onClick={() => changeGuild(data)}><Image className="sidebar-icon" src={guild_icon} alt={data.name} width={100} height={100}/></a>}
       <span className="sidebar-tooltip group-hover:scale-100">
-        {name}
+        {data.name}
       </span>
     </div>
-  );
+  )
+};
 
 const Divider = () => <hr className="sidebar-hr" />;
 
