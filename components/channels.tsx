@@ -28,7 +28,7 @@ export function Channelbar({ guild, channels }) {
 export default Channelbar;
 
 
-const Divider = () => <hr className="w-full h-0.5 ml-0 bg-gray-200"></hr>
+const Divider = () => <hr className="w-full h-0.5 ml-0 bg-gray-900"></hr>
 
 const Channel = ({type, name}) => {
 
