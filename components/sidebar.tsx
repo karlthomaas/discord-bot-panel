@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Sidebar = ({ guilds, changeGuild }) => {
 
     return (
-        <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-gray-900 text-white shadow-lg">
+        <div className="fixed top-0 left-0 h-screen w-16  m-0 flex flex-col flex-none bg-gray-900 text-white shadow-lg">
             { guilds.map((data, id: number) => {
                 const guild_icon = data.icon == null ? null: `https://cdn.discordapp.com/icons/${data.id}/${data.icon}.webp?size=96`
                 return(<SideBarIcon key={id} guild_icon={guild_icon} data={data} changeGuild={changeGuild}/>)})

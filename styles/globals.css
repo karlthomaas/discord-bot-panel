@@ -30,12 +30,11 @@
   }
 
   .channelbar{
-    @apply w-60 h-screen m-0 ml-16 bg-gray-600 overflow-hidden
+    @apply w-60 flex-none h-screen m-0 ml-16 bg-gray-600 overflow-hidden
   }
-}
 
   .server-info-bar{
-    @apply w-64 h-screen m-0 bg-gray-600 fixed top-0 right-0
+    @apply flex-grow bg-gray-600
   }
   
   .channel{
@@ -43,19 +42,25 @@
   }
 
   .content-container{
-    @apply flex
-    h-full w-full m-0
+    @apply relative
+    h-screen w-2/3 min-w-[720px]
+  }
+
+  .message-container{
+    @apply flex flex-row rounded-md text-white font-semibold
+   bg-zinc-500
+    mt-2 ml-10
   }
 
   .content-input{
-    @apply flex flex-row fixed left-64 right-16 bottom-2
-    ml-10 mr-56 mb-4 pt-2 pb-2 pl-7
+    @apply flex absolute bottom-0
+    ml-10 mb-4 pt-2 pb-2 pl-7 w-[93%]
     items-center
     font-semibold outline-none  text-white
     rounded-md bg-gray-50
   }
 
-
+}
   @layer utilities {
     .scrollbar::-webkit-scrollbar {
       width: 5px;
