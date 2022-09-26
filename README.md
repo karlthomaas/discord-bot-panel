@@ -22,15 +22,15 @@ TODO:
 * ❌ Channels are in unorganized order
 
 
-🟡 Message input
+✅ Message input
 
  * ✅ Design
 
- * 🟡 Not functional
+ * ✅ Not functional
 
-❌ Channel Chat
+🟡 Channel Chat
 
-* ❌ Fetch up to 50 messages
+* ✅ Fetch up to 50 messages
 
 * ❌ Connect with Discord's Message Gateaway
 
