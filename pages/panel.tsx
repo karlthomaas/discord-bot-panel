@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function Panel({ status, guilds, channels }) {
   const [currentGuild, setCurrentGuild] = useState(guilds[0]);
   const [currentChannels, setCurrentChannels] = useState(channels);
+  const [currentMessages, setCurrentMessages] = useState({ response: [], channel_id: [], channel_name:[]})
 
   function changeGuild(guild) {
     console.log('Click', guild)
@@ -19,7 +20,18 @@ export default function Panel({ status, guilds, channels }) {
         // todo Check if channels are valid (error messages.. etc)
         setCurrentGuild(guild);
         setCurrentChannels(channels)
-        console.log(channels)})
+      })
+  }
+
+  function loadMessages(channel_id: string, channel_name:string){
+    console.log('Loading ' + channel_id + ' messages')
+    fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getMessages/${channel_id}`)
+    .then((response) => response.json())
+    .then((channels) => {
+      channels["channel_id"] = channel_id
+      channels["channel_name"] = channel_name
+      setCurrentMessages(channels)
+    })
   }
 
   if (status !== 200) {
@@ -28,11 +40,11 @@ export default function Panel({ status, guilds, channels }) {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex ">
         <Sidebar guilds={guilds} changeGuild={changeGuild} />
-        <Channelbar guild={currentGuild} channels={currentChannels} />
-        <Chatbar />
-      <Serverinfo />
+        <Channelbar guild={currentGuild} channels={currentChannels} loadMessages={loadMessages} />
+        <Chatbar payload={currentMessages}/>
+        <Serverinfo />
       </div>
     </>
   );
@@ -53,7 +65,6 @@ export async function getServerSideProps(context) {
   }
 
   const guilds = await guildsFetch.json()
-  console.log("🚀 ~ file: panel.tsx ~ line 56 ~ getServerSideProps ~ guilds", guilds)
   if (guilds.length === 0) {
     console.log('Current bot is not in any server!')
     status = 101 // means bot is not in any server
