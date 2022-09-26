@@ -48,7 +48,7 @@
 
   .message-container{
     @apply flex flex-row rounded-md text-white font-semibold
-   bg-zinc-500
+   bg-gray-600
     mt-2 ml-10
   }
 
@@ -58,6 +58,7 @@
     items-center
     font-semibold outline-none  text-white
     rounded-md bg-gray-50
+    placeholder-gray-500
   }
 
 }
