@@ -1,7 +1,7 @@
 import { ImVolumeMedium } from "react-icons/im"
 import { BiHash } from "react-icons/bi"
 
-export function Channelbar({ guild, channels }) {
+export function Channelbar({ guild, channels, loadMessages }) {
     /* 
     Channels and their type ID's from Discord API
     ---------------------------------------------
@@ -16,10 +16,8 @@ export function Channelbar({ guild, channels }) {
                 <Divider/>
             <div className="flex flex-col h-screen overflow-y-auto scrollbar">
                 { channels.response.map((data, id: number) => {
-                    return <Channel key={id} type={data.type} name={data.name}/>
+                    return <Channel key={id} type={data.type} id={data.id} name={data.name} loadMessages={loadMessages}/>
                 })}
-                <Channel type={0} name="Tekstkan asdasd asd asd asal 1"/>
-                <Channel type={2} name="Helikanal 1"/>
             </div>
         </div>
     )
@@ -30,7 +28,7 @@ export default Channelbar;
 
 const Divider = () => <hr className="w-full h-0.5 ml-0 bg-gray-900"></hr>
 
-const Channel = ({type, name}) => {
+const Channel = ({type, id, name, loadMessages}) => {
 
     if (type == 2){
         // Voice Channel
@@ -43,7 +41,7 @@ const Channel = ({type, name}) => {
 } else if (type == 0){
     // Text Channel
     return (
-        <div className="channel">
+        <div className="channel" onClick={() => loadMessages(id, name)}>
             <div className="pt-1"><BiHash size={20}/></div>
             <div className="ml-1 whitespace-nowrap overflow-hidden">{name}</div>
         </div>
