@@ -32,7 +32,11 @@ TODO:
 
 * ✅ Fetch up to 50 messages
 
-* ❌ Connect with Discord's Message Gateaway
+* ✅ Connect with Discord's Message Gateaway
+
+* ✅ Send messages
+
+* 🟡 Make Websocket chat system flawless
 
 
 
