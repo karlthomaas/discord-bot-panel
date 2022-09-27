@@ -2,21 +2,49 @@ import Sidebar from "../components/sidebar";
 import Channelbar from "../components/channels";
 import Serverinfo from "../components/info";
 import Chatbar from "../components/chat";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import io from 'Socket.IO-client'
 
+let socket;
 export default function Panel({ status, guilds, channels }) {
   const [currentGuild, setCurrentGuild] = useState(guilds[0]);
   const [currentChannels, setCurrentChannels] = useState(channels);
-  const [currentMessages, setCurrentMessages] = useState({ response: [], channel_id: [], channel_name:[]})
+  const [currentMessages, setCurrentMessages] = useState({ response: [], channel_id: '', channel_name: ''})
+  const [newMessage, setNewMessage] = useState(null)
+  
+  useEffect(() => {
+    socketInitializer();
+  }, [])
 
+
+  const socketInitializer = async () => {
+    await fetch("/api/socket")
+
+    socket = io();
+
+    socket.on('connect', () =>{
+      console.log('Client side: Connected')
+    })
+    socket.on('newMessage', (msg) => {
+      // executes when new message is being sent
+      let current_channel = sessionStorage.getItem('current_channel_id') // Gets current channel from storage
+      if (msg.channel_id === current_channel){
+        // Checks if message is being sent from the same channel \
+        // That the bot is watching
+        setNewMessage(msg)
+      } else{
+      }
+    })
+  }
+
+  
+  
+  // s
   function changeGuild(guild) {
-    console.log('Click', guild)
-
     // Fetches Channels from that guild
     fetch (process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getChannels/${guild.id}`)
     .then( (response) =>  response.json())
     .then((channels) => {
-        console.log("🚀 ~ file: panel.tsx ~ line 18 ~ .then ~ channels", channels)
         // todo Check if channels are valid (error messages.. etc)
         setCurrentGuild(guild);
         setCurrentChannels(channels)
@@ -24,13 +52,15 @@ export default function Panel({ status, guilds, channels }) {
   }
 
   function loadMessages(channel_id: string, channel_name:string){
-    console.log('Loading ' + channel_id + ' messages')
     fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getMessages/${channel_id}`)
     .then((response) => response.json())
     .then((channels) => {
       channels["channel_id"] = channel_id
       channels["channel_name"] = channel_name
       setCurrentMessages(channels)
+      setNewMessage(null)
+      window.sessionStorage.setItem('current_channel_id', channels.channel_id)
+      
     })
   }
 
@@ -43,7 +73,7 @@ export default function Panel({ status, guilds, channels }) {
       <div className="flex ">
         <Sidebar guilds={guilds} changeGuild={changeGuild} />
         <Channelbar guild={currentGuild} channels={currentChannels} loadMessages={loadMessages} />
-        <Chatbar payload={currentMessages}/>
+        <Chatbar payload={currentMessages} newMessage={newMessage}/>
         <Serverinfo />
       </div>
     </>
@@ -57,14 +87,16 @@ export async function getServerSideProps(context) {
       method: "get",
       headers: { Authorization: `Bot ${process.env.TOKEN}`}
   })
-
+  console.log(guildsFetch)
   if (guildsFetch.status !== 200) {
       console.log('Error while fetching bot guilds!')
       console.log(`Error code: ${guildsFetch.status}`)
+      status = guildsFetch.status
       return { props : { status }}
   }
 
   const guilds = await guildsFetch.json()
+
   if (guilds.length === 0) {
     console.log('Current bot is not in any server!')
     status = 101 // means bot is not in any server
@@ -73,7 +105,7 @@ export async function getServerSideProps(context) {
 
   const channelsFetch = await fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL+ `/api/getChannels/${guilds[0]["id"]}`)
   const channels = await channelsFetch.json()
-
+  
   return {
     props: { status, guilds, channels },
   };

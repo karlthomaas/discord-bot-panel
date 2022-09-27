@@ -2,12 +2,14 @@ import { FaRegUserCircle } from "react-icons/fa";
 import Image from 'next/image'
 import MessageInput from "./input";
 
-const Chatbar = (payload) => {
-
-  const messages = payload["payload"].response
-  const channel_id = payload["payload"].channel_id
-  const channel_name = payload["payload"].channel_name
-
+const Chatbar = ({payload, newMessage}) => {
+  if (newMessage !== null) {
+    payload.response.unshift(newMessage)
+  }
+  const messages = payload.response
+  const channel_id = payload.channel_id
+  const channel_name = payload.channel_name
+  
   return (
     <div className="content-container">
       <div className="absolute bottom-[70px] pb-15 left-200 w-[98%] h-[100%] overflow-y-auto flex flex-col-reverse scrollbar">
