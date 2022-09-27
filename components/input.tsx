@@ -18,9 +18,9 @@ const MessageInput = ({channel_name, channel_id}) => {
     // action={`/api/sendMessage/${channel_id}`}
 
     return(
-        <form  onSubmit={handleSubmit} id="message_form">
+        <form  onSubmit={handleSubmit} id="message_form" >
           <input className="content-input" id="message"
-          type="text" placeholder={`Message #${channel_name}`}
+          type="text" autoComplete="off" placeholder={`Message #${channel_name}`}
           onChange={onChange}></input>
         </form>
     )
