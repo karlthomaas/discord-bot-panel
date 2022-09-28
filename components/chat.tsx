@@ -7,13 +7,14 @@ const Chatbar = ({payload, newMessage}) => {
     payload.response.unshift(newMessage)
   }
   const messages = payload.response
+  console.log("💸 ~ file: chat.tsx ~ line 10 ~ Chatbar ~ messages", messages)
   const channel_id = payload.channel_id
   const channel_name = payload.channel_name
   
   return (
     <div className="content-container">
       <div className="absolute bottom-[70px] pb-15 left-200 w-[100%] h-[100%] overflow-y-auto flex flex-col-reverse scrollbar">
-        {
+        { messages !== "Forbidden" &&
           messages.length > 0 &&
           messages.map((data, id:number) => {
             return <Message
@@ -22,13 +23,15 @@ const Chatbar = ({payload, newMessage}) => {
             />
           })}
       </div>
-      <MessageInput channel_name={channel_name} channel_id={channel_id}/>
+        
+      { messages !== "Forbidden" ? <MessageInput channel_name={channel_name} channel_id={channel_id}/> : <MessageInput channel_name={"Error"} channel_id={0}/>}
+      
         {/* <form action={`/api/sendMessage/${channel_id}`} method="post" target="_blank" id="message_form">
           <input className="content-input" id="message" type="text" placeholder={`Message #${channel_name}`}></input>
         </form> */}
     </div>
   );
-};
+}
 export default Chatbar;
 
 const Message = ({ author, author_icon, content, type, timestamp,  author_id}) => {

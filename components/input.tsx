@@ -17,13 +17,23 @@ const MessageInput = ({channel_name, channel_id}) => {
     }
     // action={`/api/sendMessage/${channel_id}`}
 
+    if (channel_id === 0 ){
+        return(
+            <form id="message_form" >
+          <input className="content-input" id="message"
+          type="text" autoComplete="off" disabled placeholder={`You do not have access to #${channel_name}!`}
+          onChange={onChange}></input>
+        </form>
+        )
+
+    } else {
     return(
         <form  onSubmit={handleSubmit} id="message_form" >
           <input className="content-input" id="message"
           type="text" autoComplete="off" placeholder={`Message #${channel_name}`}
           onChange={onChange}></input>
         </form>
-    )
+    )}
 }
 
 export default MessageInput

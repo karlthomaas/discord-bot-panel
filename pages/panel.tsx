@@ -63,6 +63,7 @@ export default function Panel({ status, guilds, channels, client}) {
     fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getMessages/${channel_id}`)
     .then((response) => response.json())
     .then((channels) => {
+      console.log("🚀 ~ file: panel.tsx ~ line 66 ~ .then ~ channels", channels)
       channels["channel_id"] = channel_id
       channels["channel_name"] = channel_name
       setCurrentMessages(channels)
