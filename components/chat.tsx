@@ -12,7 +12,7 @@ const Chatbar = ({payload, newMessage}) => {
   
   return (
     <div className="content-container">
-      <div className="absolute bottom-[70px] pb-15 left-200 w-[98%] h-[100%] overflow-y-auto flex flex-col-reverse scrollbar">
+      <div className="absolute bottom-[70px] pb-15 left-200 w-[97%] h-[100%] overflow-y-auto flex flex-col-reverse scrollbar">
         {
           messages.length > 0 &&
           messages.map((data, id:number) => {
