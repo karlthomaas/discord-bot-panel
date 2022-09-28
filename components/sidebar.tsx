@@ -1,10 +1,21 @@
 import { FiMessageCircle } from "react-icons/fi";
+import { FaRobot } from "react-icons/fa";
 import Image from 'next/image'
 
-const Sidebar = ({ guilds, changeGuild }) => {
-
+const Sidebar = ({ guilds, changeGuild, client}) => {
+  console.log(client)
     return (
         <div className="fixed top-0 left-0 h-screen w-16  m-0 flex flex-col flex-none bg-gray-900 text-white shadow-lg">
+          <div id="profile-icon" className="sidebar-icon group">
+            <FaRobot size="20"/>
+            <span id="profile" className="sidebar-profile group-hover:scale-100">
+              Bot information: <br/>
+              Name - {client.username}<br/>
+              ID - {client.id} <br/>
+              Bot Servers - {guilds.length}
+            </span>
+          </div>
+          <Divider/>
             { guilds.map((data, id: number) => {
                 const guild_icon = data.icon == null ? null: `https://cdn.discordapp.com/icons/${data.id}/${data.icon}.webp?size=96`
                 return(<SideBarIcon key={id} guild_icon={guild_icon} data={data} changeGuild={changeGuild}/>)})
