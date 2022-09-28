@@ -6,8 +6,8 @@
   .sidebar-icon {
     @apply relative flex items-center justify-center 
     h-12 w-12 mt-3 mb-2 mx-auto py-3
-  bg-gray-400 dark:bg-gray-800 
-  text-green-500 hover:text-white
+  bg-gray-400
+  text-white hover:text-white
     hover:rounded-xl rounded-3xl
     transition-all duration-300 ease-linear
     cursor-pointer shadow-lg ;
@@ -17,7 +17,7 @@
   }
 
   .sidebar-tooltip {
-    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md
+    @apply absolute w-auto p-2 m-2 ml-3 min-w-max left-14 rounded-md shadow-md
     text-white bg-gray-900 
     text-xs font-bold 
     transition-all duration-100 scale-0 origin-left;
@@ -29,9 +29,8 @@
     transition-all duration-300 scale-0
   }
   .sidebar-hr {
-    @apply bg-gray-200 dark:bg-gray-800 
-    border border-gray-200 dark:border-gray-800 rounded-full
-    mx-2;
+    @apply bg-gray-25 border border-gray-25 rounded-full
+    mx-4;
   }
 
   .channelbar{
@@ -39,7 +38,7 @@
   }
 
   .server-info-bar{
-    @apply flex-grow bg-gray-600 text-white font-semibold 
+    @apply flex-grow bg-gray-600 text-white font-semibold ml-1
   }
   
   .channel{
@@ -48,13 +47,13 @@
 
   .content-container{
     @apply relative
-    h-screen w-2/3 min-w-[720px]
+    h-screen w-2/3 min-w-[720px] 
   }
 
   .message-container{
-    @apply flex flex-row rounded-md text-white font-semibold
-   bg-gray-600
-    mt-2 ml-10
+    @apply flex flex-row text-white font-semibold
+   hover:bg-gray-600 bg-gray-25 pl-5
+    mt-2
   }
 
   .content-input{
@@ -69,8 +68,10 @@
 }
   @layer utilities {
     .scrollbar::-webkit-scrollbar {
-      width: 5px;
-      background:'#202225',
+      width: 10px;
+      background:'#202225';
+      border-radius: 10px;
+    }
     }
   
     .scrollbar::-webkit-scrollbar-thumb {
@@ -82,7 +83,12 @@
     .scrollbar::-webkit-scrollbar-thumb:hover {
       background: #202225;
     }
-  }
+
+    .scrollbar::-webkit-scrollbar-track {
+      background: #2c3038; 
+      border-radius: 10px;
+    }
+  
 body {
   background-color: #36393F;
 }

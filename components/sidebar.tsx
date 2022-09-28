@@ -28,10 +28,15 @@ const SideBarIcon = ({ guild_icon, data, changeGuild}) => {
 
   return (
     <div className="group sidebar-group">
+      <span>
+        
+      </span>
     {guild_icon == null ? <a className="sidebar-icon"  onClick={() => changeGuild(data)}><FiMessageCircle size="20"/></a>: <a onClick={() => changeGuild(data)}><Image className="sidebar-icon" src={guild_icon} alt={data.name} width={50} height={50}/></a>}
       <span className="sidebar-tooltip group-hover:scale-100">
         {data.name}
       </span>
+
+
     </div>
   )
 };
