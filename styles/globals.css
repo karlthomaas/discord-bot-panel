@@ -23,6 +23,11 @@
     transition-all duration-100 scale-0 origin-left;
   }
 
+  .sidebar-profile{
+    @apply absolute left-14 top-[0] w-auto min-w-max pl-3 
+    bg-gray-700 text-white font-semibold rounded-md
+    transition-all duration-300 scale-0
+  }
   .sidebar-hr {
     @apply bg-gray-200 dark:bg-gray-800 
     border border-gray-200 dark:border-gray-800 rounded-full
@@ -34,7 +39,7 @@
   }
 
   .server-info-bar{
-    @apply flex-grow bg-gray-600 text-white font-semibold
+    @apply flex-grow bg-gray-600 text-white font-semibold 
   }
   
   .channel{
