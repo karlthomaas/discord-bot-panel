@@ -34,7 +34,7 @@
   }
 
   .server-info-bar{
-    @apply flex-grow bg-gray-600
+    @apply flex-grow bg-gray-600 text-white font-semibold
   }
   
   .channel{
