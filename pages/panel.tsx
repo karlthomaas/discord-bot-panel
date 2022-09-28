@@ -4,12 +4,13 @@ import Serverinfo from "../components/info";
 import Chatbar from "../components/chat";
 import { useEffect, useState, useRef } from "react";
 import io from 'Socket.IO-client'
-
+ 
 let socket;
 export default function Panel({ status, guilds, channels }) {
   const [currentGuild, setCurrentGuild] = useState(guilds[0]);
   const [currentChannels, setCurrentChannels] = useState(channels);
   const [currentMessages, setCurrentMessages] = useState({ response: [], channel_id: '', channel_name: ''})
+  const [currentChannel, setCurrentChannel] = useState({ response: []})
   const [newMessage, setNewMessage] = useState(null)
   
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function Panel({ status, guilds, channels }) {
     socket.on('connect', () =>{
       console.log('Client side: Connected')
     })
+
     socket.on('newMessage', (msg) => {
       // executes when new message is being sent
       let current_channel = sessionStorage.getItem('current_channel_id') // Gets current channel from storage
@@ -52,6 +54,7 @@ export default function Panel({ status, guilds, channels }) {
   }
 
   function loadMessages(channel_id: string, channel_name:string){
+    // Sets new messages
     fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getMessages/${channel_id}`)
     .then((response) => response.json())
     .then((channels) => {
@@ -61,6 +64,12 @@ export default function Panel({ status, guilds, channels }) {
       setNewMessage(null)
       window.sessionStorage.setItem('current_channel_id', channels.channel_id)
       
+    })
+    // Returns Current Channel object
+    fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `api/getChannel/${channel_id}`)
+    .then((response) => response.json())
+    .then((channel) => {
+      setCurrentChannel(channel)
     })
   }
 
@@ -74,7 +83,7 @@ export default function Panel({ status, guilds, channels }) {
         <Sidebar guilds={guilds} changeGuild={changeGuild} />
         <Channelbar guild={currentGuild} channels={currentChannels} loadMessages={loadMessages} />
         <Chatbar payload={currentMessages} newMessage={newMessage}/>
-        <Serverinfo />
+        <Serverinfo currentGuild={currentGuild} currentChannel={currentChannel}/>
       </div>
     </>
   );
