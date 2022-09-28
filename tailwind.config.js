@@ -16,6 +16,7 @@ module.exports = {
           150: '#96989D',
           100: '#3C3F45',
           50: '#40444B',
+          25: '#36393F' // chat background
         },
 
         indigo:{
