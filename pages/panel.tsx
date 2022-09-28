@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import io from 'Socket.IO-client'
  
 let socket;
-export default function Panel({ status, guilds, channels }) {
+export default function Panel({ status, guilds, channels, client}) {
   const [currentGuild, setCurrentGuild] = useState(guilds[0]);
   const [currentChannels, setCurrentChannels] = useState(channels);
   const [currentMessages, setCurrentMessages] = useState({ response: [], channel_id: '', channel_name: ''})
@@ -50,6 +50,11 @@ export default function Panel({ status, guilds, channels }) {
         // todo Check if channels are valid (error messages.. etc)
         setCurrentGuild(guild);
         setCurrentChannels(channels)
+        // takes the first channel from new guild
+        var firstChannel = channels.response[0]
+
+        // 
+        loadMessages(firstChannel.id, firstChannel.name)
       })
   }
 
@@ -80,7 +85,7 @@ export default function Panel({ status, guilds, channels }) {
   return (
     <>
       <div className="flex ">
-        <Sidebar guilds={guilds} changeGuild={changeGuild} />
+        <Sidebar guilds={guilds} changeGuild={changeGuild} client={client}/>
         <Channelbar guild={currentGuild} channels={currentChannels} loadMessages={loadMessages} />
         <Chatbar payload={currentMessages} newMessage={newMessage}/>
         <Serverinfo currentGuild={currentGuild} currentChannel={currentChannel}/>
@@ -90,6 +95,13 @@ export default function Panel({ status, guilds, channels }) {
 }
 
 export async function getServerSideProps(context) {
+
+  const clientFetch = await fetch(process.env.DISCORD_API_BASE_URL + `/users/@me`, {
+    method: "get",
+      headers: { Authorization: `Bot ${process.env.TOKEN}`}
+  })
+  const client = await clientFetch.json()
+
   var status = 200;
   const guildsFetch = await fetch(process.env.DISCORD_API_BASE_URL + `/users/@me/guilds`, {
       // Function which fetches bot Servers
@@ -116,6 +128,6 @@ export async function getServerSideProps(context) {
   const channels = await channelsFetch.json()
   
   return {
-    props: { status, guilds, channels },
+    props: { status, guilds, channels, client },
   };
 }
