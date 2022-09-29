@@ -50,7 +50,7 @@ TODO:
 
 ## Showcase
 
-![Example 1](https://gifyu.com/image/S3ZPs)
+![Example 1]([https://gifyu.com/image/S3ZPs](https://media.giphy.com/media/d302uBWgEAhVCM3ckh/giphy.gif))
 
 ## Environment Variables
 
