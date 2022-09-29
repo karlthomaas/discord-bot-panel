@@ -5,7 +5,7 @@
 @layer components {
   .sidebar-icon {
     @apply relative flex items-center justify-center 
-    h-12 w-12 mt-3 mb-2 mx-auto py-3
+    h-12 w-12 mx-auto py-3 mt-1
   bg-gray-400
   text-white hover:text-white
     hover:rounded-xl rounded-3xl
