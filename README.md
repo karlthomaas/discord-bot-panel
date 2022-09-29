@@ -38,8 +38,19 @@ TODO:
 
 * 🟡 Make Websocket chat system flawless
 
+❌ Voice Channel
 
+* ❌ View People in Voice Channel
 
+* ❌ Join Voice channel
+
+* ❌ Speak in voice channel
+
+* ❌ Add working Mute / Deafen  buttons
+
+## Showcase
+
+![Example 1](https://media.giphy.com/media/d302uBWgEAhVCM3ckh/giphy.gif)
 
 ## Environment Variables
 
