@@ -8,7 +8,5 @@ export default function UserPanel({ guilds }){
 export async function getServerSideProps({ pageProps, context }){
     const guilds = 1
     // const guilds = context.ctx.guilds
-    console.log(pageProps)
-
     return {props: { guilds }}
 }

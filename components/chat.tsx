@@ -7,7 +7,6 @@ const Chatbar = ({payload, newMessage}) => {
     payload.response.unshift(newMessage)
   }
   const messages = payload.response
-  console.log("💸 ~ file: chat.tsx ~ line 10 ~ Chatbar ~ messages", messages)
   const channel_id = payload.channel_id
   const channel_name = payload.channel_name
   

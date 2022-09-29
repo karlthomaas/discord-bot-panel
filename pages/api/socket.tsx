@@ -67,7 +67,6 @@ function emitDiscordMessage(socket, io){
             // Discord sends  Hello 10 event (containing heartbeat interval)
             // Pings are used to let Discord know were still using Gateaway connection
             const { heartbeat_interval } = d;
-            console.log(heartbeat_interval)
             let interval = heartbeat(heartbeat_interval)
             break;
 
@@ -77,7 +76,6 @@ function emitDiscordMessage(socket, io){
         case 'MESSAGE_CREATE':
             let author = d.author.username
             let content = d.content
-            console.log(`${author}: ${content}`)
             socket.emit('newMessage', d)
     }
 })

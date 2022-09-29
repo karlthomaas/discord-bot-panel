@@ -1,7 +1,4 @@
 const Serverinfo = ({currentGuild, currentChannel}) => {
-    console.log("🚀 ~ file: info.tsx ~ line 2 ~ Serverinfo ~ currentChannel", currentChannel)
-    console.log("🚀 ~ file: info.tsx ~ line 2 ~ Serverinfo ~ currentGuild", currentGuild)
-
     if (currentChannel.response.length !== 0){
         var css= "w-56"
         var channel_jsx = (

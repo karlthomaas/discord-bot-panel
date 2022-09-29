@@ -10,7 +10,6 @@ export default async function handler(req, res){
         res.status(200).json({response: channel})
         return;
     }  else {
-        console.log(channelFetch)
         res.status(channelFetch.status).json({response: channelFetch.statusText})
     }
 }
