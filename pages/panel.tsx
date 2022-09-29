@@ -47,6 +47,7 @@ export default function Panel({ status, guilds, channels, client}) {
     fetch (process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getChannels/${guild.id}`)
     .then( (response) =>  response.json())
     .then((channels) => {
+        console.log(channels)
         // todo Check if channels are valid (error messages.. etc)
         setCurrentGuild(guild);
         setCurrentChannels(channels)
@@ -62,13 +63,12 @@ export default function Panel({ status, guilds, channels, client}) {
     // Sets new messages
     fetch(process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getMessages/${channel_id}`)
     .then((response) => response.json())
-    .then((channels) => {
-      console.log("🚀 ~ file: panel.tsx ~ line 66 ~ .then ~ channels", channels)
-      channels["channel_id"] = channel_id
-      channels["channel_name"] = channel_name
-      setCurrentMessages(channels)
+    .then((messages) => {
+      messages["channel_id"] = channel_id
+      messages["channel_name"] = channel_name
+      setCurrentMessages(messages)
       setNewMessage(null)
-      window.sessionStorage.setItem('current_channel_id', channels.channel_id)
+      window.sessionStorage.setItem('current_channel_id', messages.channel_id)
       
     })
     // Returns Current Channel object
@@ -118,6 +118,7 @@ export async function getServerSideProps(context) {
   }
 
   const guilds = await guildsFetch.json()
+  guilds.reverse()
 
   if (guilds.length === 0) {
     console.log('Current bot is not in any server!')
