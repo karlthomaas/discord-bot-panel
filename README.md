@@ -48,6 +48,10 @@ TODO:
 
 * ❌ Add working Mute / Deafen  buttons
 
+## Showcase
+
+![Example 1](https://gifyu.com/image/S3ZPs)
+
 ## Environment Variables
 
 DISCORD_API_BASE_URL = https://discord.com/api/v10
