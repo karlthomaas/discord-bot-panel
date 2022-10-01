@@ -13,7 +13,6 @@ export default function Panel({ status, guilds, channels, client}) {
   const [currentMessages, setCurrentMessages] = useState({ response: [], channel_id: '', channel_name: ''})
   const [currentChannel, setCurrentChannel] = useState({ response: []})
   const [newMessage, setNewMessage] = useState(null)
-  
   useEffect(() => {
     socketInitializer();
   }, [])
@@ -88,7 +87,7 @@ export default function Panel({ status, guilds, channels, client}) {
     <>
       <div className="flex">
         <Sidebar guilds={guilds} changeGuild={changeGuild} client={client}/>
-        <Channelbar guild={currentGuild} channels={currentChannels.response} loadMessages={loadMessages} />
+        <Channelbar guild={currentGuild} channels={currentChannels.response} client={client} loadMessages={loadMessages} />
         <div className="flex flex-col w-[100%]">
         <Section/>
         <div className="flex h-[calc(100vh_-_50px)] ">

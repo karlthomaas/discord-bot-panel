@@ -1,8 +1,14 @@
 import { ImVolumeMedium } from "react-icons/im"
 import { BiHash } from "react-icons/bi"
+import { FaRegUserCircle } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md"
+import { HiMicrophone } from "react-icons/hi"
+import { MdHeadset } from "react-icons/md"
+import { BsFillGearFill } from "react-icons/bs"
 
-export function Channelbar({ guild, channels, loadMessages }) {
+import Image from 'next/image'
+
+export function Channelbar({ guild, channels, client, loadMessages }) {
     /* 
     Channels and their type ID's from Discord API
     ---------------------------------------------
@@ -53,11 +59,14 @@ export function Channelbar({ guild, channels, loadMessages }) {
     }
 
     //* <- Algorithm for sorting the channels
+
+    const icon_url = `https://cdn.discordapp.com/avatars/${client.id}/${client.avatar}.png?size=1024`
+    const button_css = 'hover:bg-gray-25'
     return(
         <div className="channelbar">
             
             <div className="pl-6 pt-3 pb-3 text-white font-medium border-b-2 border-gray-900">{guild.name}</div>
-            <div className="flex flex-col h-screen overflow-y-auto scrollbar">
+            <div className="flex flex-col h-[89%] overflow-y-auto scrollbar">
             {
                 Object.keys(sorted_channels).map((category, index) => {
                     { }
@@ -72,6 +81,23 @@ export function Channelbar({ guild, channels, loadMessages }) {
                     }))
 
                 })}
+          
+            </div>
+            <div className="w-full h-full bg-gray-800 flex text-white">
+                <div className="pt-3">
+                { client.avatar == null ? <FaRegUserCircle size={30} /> : <Image src={icon_url} alt={client.name} height={35} width={35} className="rounded-full"></Image>}
+                </div>
+                <div className="flex-row pt-2 font-semibold pl-2 text-sm">
+                    <p>{client.username}</p>
+                    <p className="text-gray-10">Status...</p>
+
+                </div>
+                <div className="flex ml-auto mr-3 mt-5 space-x-3">
+                    <HiMicrophone className={button_css} size={20}/>
+                    <MdHeadset className={button_css} size={20}/>
+                    <BsFillGearFill className={button_css} size={20}/>
+                </div>
+
             </div>
 
         </div>
