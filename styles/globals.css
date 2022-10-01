@@ -5,7 +5,7 @@
 @layer components {
   .sidebar-icon {
     @apply relative flex items-center justify-center 
-    h-12 w-12 mx-auto py-3 mt-1
+    h-12 w-12 mx-auto py-3 mt-2
   bg-gray-400
   text-white hover:text-white
     hover:rounded-xl rounded-3xl
@@ -36,10 +36,6 @@
   .channelbar{
     @apply w-60 flex-none h-screen m-0 ml-16 bg-gray-600 overflow-hidden
   }
-
-  .server-info-bar{
-    @apply flex-grow bg-gray-600 text-white font-semibold ml-1
-  }
   
   .channel{
     @apply flex flex-row px-3 py-1 mx-1 hover:bg-gray-100 hover:rounded-md hover:text-white text-gray-150 cursor-pointer
@@ -65,6 +61,7 @@
       width: 10px;
       background:'#202225';
       border-radius: 10px;
+      scroll-padding-right: 20px;
     }
     }
   

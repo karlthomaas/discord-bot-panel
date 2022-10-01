@@ -25,7 +25,10 @@ const Serverinfo = ({currentGuild, currentChannel}) => {
     }
 
     return (
-        <div className="server-info-bar ">
+        <div className="flex-grow bg-gray-600 text-white font-semibold">
+            {/* <div className="h-[50px] w-full bg-gray-25 border-b-2 border-gray-900 ml-0">
+
+            </div> */}
             <div className="mt-3 ml-3 break-all">
                 <h1>Guild:</h1>
                 {guild_jsx}

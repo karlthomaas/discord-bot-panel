@@ -13,13 +13,8 @@ const Chatbar = ({payload, newMessage}) => {
   
   return (
     <>
-    <div className="w-2/3 min-w-[720px] relative h-screen ">
-      <div className="w-full h-[50px] bg-gray-25 flex pl-5 pt-3 border-b-2 border-gray-900">
-        <BiHash className="text-gray-10" size={30}/>
-        <div className="text-white text-lg font-bold pl-2">Channel Name 1</div>
-      </div>
-      {/* <Divider/> */}
-      <div className="w-[100%] h-[89%] overflow-y-scroll flex flex-none flex-col-reverse scrollbar">
+    <div className="w-[100%] min-w-[720px] mr-1">
+      <div className="overflow-y-scroll flex flex-none flex-col-reverse scrollbar h-[calc(100vh_-_100px)] pr-10 ">
         { messages !== "Forbidden" &&
           messages.length > 0 &&
           messages.map((data, id:number) => {
@@ -27,7 +22,7 @@ const Chatbar = ({payload, newMessage}) => {
             key={id} content={data.content} author={data.author.username} author_id={data.author.id}
             author_icon={data.author.avatar} type={data.type} timestamp={data.timestamp}
             />
-          })}
+            })}
       </div>
       { messages !== "Forbidden" ? <MessageInput channel_name={channel_name} channel_id={channel_id}/> : <MessageInput channel_name={"Error"} channel_id={0}/>}
     </div>

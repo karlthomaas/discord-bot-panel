@@ -1,6 +1,7 @@
 import Sidebar from "../components/sidebar";
 import Channelbar from "../components/channels";
 import Serverinfo from "../components/info";
+import Section from "../components/section"
 import Chatbar from "../components/chat";
 import { useEffect, useState, useRef } from "react";
 import io from 'Socket.IO-client'
@@ -85,11 +86,17 @@ export default function Panel({ status, guilds, channels, client}) {
 
   return (
     <>
-      <div className="flex ">
+      <div className="flex">
         <Sidebar guilds={guilds} changeGuild={changeGuild} client={client}/>
         <Channelbar guild={currentGuild} channels={currentChannels.response} loadMessages={loadMessages} />
+        <div className="flex flex-col w-[100%]">
+        <Section/>
+        <div className="flex h-[calc(100vh_-_50px)] ">
         <Chatbar payload={currentMessages} newMessage={newMessage}/>
         <Serverinfo currentGuild={currentGuild} currentChannel={currentChannel}/>
+        </div>
+        </div>
+        
       </div>
     </>
   );
