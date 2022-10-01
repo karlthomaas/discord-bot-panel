@@ -51,37 +51,16 @@ export function Channelbar({ guild, channels, loadMessages }) {
             }
         }
     }
-   console.log(sorted_channels)
-    var channel_jsx = ( <>
-    {
-        Object.keys(sorted_channels).map((data, id: number) => {
-            // return <Channel key={id} type={4} id={123} name={sorted_channels[data].category_name} loadMessages={loadMessages}/>
-            Object.keys(sorted_channels[data]["channels"]).map((data2, id) => {
-                return <Channel key={id} type={sorted_channels[data]["channels"][data2].type} id={sorted_channels[data]["channels"][data2].id}
-                name={sorted_channels[data]["channels"][data2].name} loadMessages={loadMessages}/>
-            })
-            // return <Channel key={id} type={data.type} id={data.id} name={data.name} loadMessages={loadMessages}/>
-        })
-    }
-    </>)
-    
-    console.log(sorted_channels["0"]["channels"][""])
+
     //* <- Algorithm for sorting the channels
     return(
         <div className="channelbar">
             
-            <div className="pl-6 mt-3 mb-3 text-white font-medium">{guild.name}</div>
-                <Divider/>
-            {/* <div className="flex flex-col h-screen overflow-y-auto scrollbar">
-                { channels.map((data, id: number) => {
-                    return <Channel key={id} type={data.type} id={data.id} name={data.name} loadMessages={loadMessages}/>
-                })}
-            </div> */}
-
+            <div className="pl-6 pt-3 pb-3 text-white font-medium border-b-2 border-gray-900">{guild.name}</div>
             <div className="flex flex-col h-screen overflow-y-auto scrollbar">
             {
                 Object.keys(sorted_channels).map((category, index) => {
-
+                    { }
                     return (
                     // <Channel type={4} id={sorted_channels[value].category_id} name={sorted_channels[value].name} loadMessages={loadMessages}  /> 
                     
@@ -100,9 +79,6 @@ export function Channelbar({ guild, channels, loadMessages }) {
 }
 
 export default Channelbar;
-
-
-const Divider = () => <hr className="w-full h-0.5 ml-0 bg-gray-900"></hr>
 
 const Channel = ({type, id, name, loadMessages}) => {
 

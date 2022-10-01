@@ -1,4 +1,5 @@
 import { FaRegUserCircle } from "react-icons/fa";
+import { BiHash } from "react-icons/bi"
 import Image from 'next/image'
 import MessageInput from "./input";
 
@@ -11,24 +12,26 @@ const Chatbar = ({payload, newMessage}) => {
   const channel_name = payload.channel_name
   
   return (
-    <div className="content-container">
-      <div className="absolute bottom-[70px] pb-15 left-200 w-[100%] h-[100%] overflow-y-auto flex flex-col-reverse scrollbar">
+    <>
+    <div className="w-2/3 min-w-[720px] relative h-screen ">
+      <div className="w-full h-[50px] bg-gray-25 flex pl-5 pt-3 border-b-2 border-gray-900">
+        <BiHash className="text-gray-10" size={30}/>
+        <div className="text-white text-lg font-bold pl-2">Channel Name 1</div>
+      </div>
+      {/* <Divider/> */}
+      <div className="w-[100%] h-[89%] overflow-y-scroll flex flex-none flex-col-reverse scrollbar">
         { messages !== "Forbidden" &&
           messages.length > 0 &&
           messages.map((data, id:number) => {
-            return <Message
+            return <Message 
             key={id} content={data.content} author={data.author.username} author_id={data.author.id}
             author_icon={data.author.avatar} type={data.type} timestamp={data.timestamp}
             />
           })}
       </div>
-        
       { messages !== "Forbidden" ? <MessageInput channel_name={channel_name} channel_id={channel_id}/> : <MessageInput channel_name={"Error"} channel_id={0}/>}
-      
-        {/* <form action={`/api/sendMessage/${channel_id}`} method="post" target="_blank" id="message_form">
-          <input className="content-input" id="message" type="text" placeholder={`Message #${channel_name}`}></input>
-        </form> */}
     </div>
+    </>
   );
 }
 export default Chatbar;

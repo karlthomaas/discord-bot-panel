@@ -45,20 +45,14 @@
     @apply flex flex-row px-3 py-1 mx-1 hover:bg-gray-100 hover:rounded-md hover:text-white text-gray-150 cursor-pointer
   }
 
-  .content-container{
-    @apply relative
-    h-screen w-2/3 min-w-[720px] 
-  }
-
   .message-container{
-    @apply flex flex-row text-white font-semibold
-   hover:bg-gray-600 bg-gray-25 pl-5
-    mt-2
+    @apply flex flex-row flex-none text-white font-semibold
+   hover:bg-gray-600 bg-gray-25 pl-5 mt-2
   }
 
   .content-input{
-    @apply flex absolute bottom-0
-    ml-10 mb-4 pt-2 pb-2 pl-7 w-[93%]
+    @apply flex flex-none bottom-0
+    ml-5 mb-4 py-2 pl-7 w-[96%]
     items-center
     font-semibold outline-none  text-white
     rounded-md bg-gray-50
