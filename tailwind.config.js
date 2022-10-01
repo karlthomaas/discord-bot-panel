@@ -16,7 +16,8 @@ module.exports = {
           150: '#96989D',
           100: '#3C3F45',
           50: '#40444B',
-          25: '#36393F' // chat background
+          25: '#36393F', // chat background
+          10: '#8E9297', // channel hash
         },
 
         indigo:{
