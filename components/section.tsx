@@ -5,7 +5,8 @@ import { FiUsers } from "react-icons/fi"
 import { BsFillBellFill } from "react-icons/bs"
 import {RiChatQuoteLine} from "react-icons/ri"
 
-const Section = () => {
+const Section = ({ currentChannel }) => {
+    console.log("🚀 ~ file: section.tsx ~ line 9 ~ Section ~ currentChannel", currentChannel)
     const buttons_class = 'hover:text-white hover:cursor-pointer'
     const button_size = 24
     return (
@@ -13,7 +14,7 @@ const Section = () => {
 
         <div id="channel-information" className="flex">
             <BiHash className="text-gray-10" size={30}/>
-            <div className="text-white text-lg font-bold pl-2">Channel Name 1</div>
+            <div className="text-white text-lg font-bold pl-2">{currentChannel.response.name == undefined ? "Unknown" : currentChannel.response.name}</div>
         </div>
         <div id="media-buttons" className="flex space-x-4 ml-auto mr-5 text-gray-10">
             <RiChatQuoteLine className={buttons_class} size={button_size} />

@@ -89,7 +89,7 @@ export default function Panel({ status, guilds, channels, client}) {
         <Sidebar guilds={guilds} changeGuild={changeGuild} client={client}/>
         <Channelbar guild={currentGuild} channels={currentChannels.response} client={client} loadMessages={loadMessages} />
         <div className="flex flex-col w-[100%]">
-        <Section/>
+        <Section currentChannel={currentChannel}/>
         <div className="flex h-[calc(100vh_-_50px)] ">
         <Chatbar payload={currentMessages} newMessage={newMessage}/>
         <Serverinfo currentGuild={currentGuild} currentChannel={currentChannel}/>
