@@ -17,9 +17,9 @@ TODO:
 
 * ✅ Display them on Sidebar
 
-* ❌ Categories are not collapsable
+* ✅ Display channels in correct order
 
-* ❌ Channels are in unorganized order
+* ❌ Collapsable categories
 
 
 ✅ Message input
@@ -27,8 +27,9 @@ TODO:
  * ✅ Design
 
  * ✅ Not functional
+ 
 
-🟡 Channel Chat
+✅ Channel Chat
 
 * ✅ Fetch up to 50 messages
 
@@ -36,7 +37,6 @@ TODO:
 
 * ✅ Send messages
 
-* 🟡 Make Websocket chat system flawless
 
 ❌ Voice Channel
 
@@ -47,6 +47,8 @@ TODO:
 * ❌ Speak in voice channel
 
 * ❌ Add working Mute / Deafen  buttons
+
+🟡 UI CSS 80/100%.
 
 ## Showcase
 
