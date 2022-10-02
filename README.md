@@ -52,7 +52,7 @@ TODO:
 
 ## Showcase
 
-![Example 1](https://media.giphy.com/media/d302uBWgEAhVCM3ckh/giphy.gif)
+![Example 1](https://media.giphy.com/media/LKXot0tuuJ3xJ1daOe/giphy.gif)
 
 ## Environment Variables
 
