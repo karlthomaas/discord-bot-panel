@@ -1,7 +1,7 @@
 
 # Discord Bot Panel
 
-Website where you can log in as a Bot and have a similar UI like in normal Discord.
+Website where you can login as your Bot and use it to navigate through your servers and channels and chat with other people.
 This Project is being built using NextJS, Tailwindcss and mainly Typescript. 
 
 This project is made solely for my learning purposes only (so might be buggy).
