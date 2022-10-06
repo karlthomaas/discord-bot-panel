@@ -33,6 +33,8 @@ const SideBarIcon = ({ guild_icon, data, changeGuild}) => {
       <span className="sidebar-tooltip group-hover:scale-100">
         {data.name}
       </span>
+
+
     </div>
   )
 };
