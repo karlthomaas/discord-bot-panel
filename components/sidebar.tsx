@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Sidebar = ({ guilds, changeGuild, client}) => {
     return (
-        <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col flex-none bg-gray-900 text-white shadow-lg">
+        <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col flex-none bg-gray-900 text-white shadow-lg overflow-y-auto no-scrollbar">
           <div id="profile-icon" className="sidebar-icon group mb-2">
             <FaRobot size="20"/>
             <span id="profile" className="sidebar-profile group-hover:scale-100">
@@ -29,15 +29,10 @@ const SideBarIcon = ({ guild_icon, data, changeGuild}) => {
 
   return (
     <div className="group sidebar-group">
-      <span>
-        
-      </span>
     {guild_icon == null ? <a className="sidebar-icon" onClick={() => changeGuild(data)}><FiMessageCircle size="20"/></a>: <a className="sidebar-icon" onClick={() => changeGuild(data)}><Image className="rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear cursor-pointer shadow-lg" src={guild_icon} alt={data.name} width={50} height={50}/></a>}
       <span className="sidebar-tooltip group-hover:scale-100">
         {data.name}
       </span>
-
-
     </div>
   )
 };
