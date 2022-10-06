@@ -39,9 +39,9 @@ export default function Panel({ status, guilds, channels, client}) {
     })
   }
 
-  
-  
-  // s
+  if (status === 401){
+    return <h1 className="text-white text-xl font-semibold text-center">Bot token is invalid.</h1>
+  }
   function changeGuild(guild) {
     // Fetches Channels from that guild
     fetch (process.env.NEXT_PUBLIC_WEBPAGE_BASE_URL + `/api/getChannels/${guild.id}`)
@@ -120,7 +120,8 @@ export async function getServerSideProps(context) {
       console.log('Error while fetching bot guilds!')
       console.log(`Error code: ${guildsFetch.status}`)
       status = guildsFetch.status
-      return { props : { status }}
+      const guilds = {}
+      return { props : { status, guilds }}
   }
 
   const guilds = await guildsFetch.json()
