@@ -63,28 +63,25 @@ export function Channelbar({ guild, channels, client, loadMessages }) {
     const icon_url = `https://cdn.discordapp.com/avatars/${client.id}/${client.avatar}.png?size=1024`
     const button_css = 'hover:bg-gray-25'
     return(
+        <>
         <div className="channelbar">
             
             <div className="pl-6 pt-3 pb-3 text-white font-medium border-b-2 border-gray-900">{guild.name}</div>
-            <div className="flex flex-col h-[89%] overflow-y-auto scrollbar">
+            <div className="flex flex-col h-[calc(100vh_-_110px)] overflow-y-auto scrollbar">
             {
                 Object.keys(sorted_channels).map((category, index) => {
-                    { }
                     return (
-                    // <Channel type={4} id={sorted_channels[value].category_id} name={sorted_channels[value].name} loadMessages={loadMessages}  /> 
-                    
                     Object.keys(sorted_channels[category].channels).map((channel_id, index2) => {
                         return (
-                            // <h1 key={index2}>{sorted_channels[category]["channels"][channel_id].name}</h1>
                             <Channel key={index2} type={sorted_channels[category]["channels"][channel_id].type} id={sorted_channels[category]["channels"][channel_id].id} name={sorted_channels[category]["channels"][channel_id].name} loadMessages={loadMessages}/>
                         )
                     }))
-
                 })}
-          
             </div>
-            <div className="w-full h-full bg-gray-800 flex text-white">
-                <div className="pt-3">
+        </div>
+
+        <div className="w-60 h-14 fixed bottom-0 left-[64px] bg-gray-800 flex text-white">
+                <div className="pt-3 pl-3">
                 { client.avatar == null ? <FaRegUserCircle size={30} /> : <Image src={icon_url} alt={client.name} height={35} width={35} className="rounded-full"></Image>}
                 </div>
                 <div className="flex-row pt-2 font-semibold pl-2 text-sm">
@@ -99,8 +96,7 @@ export function Channelbar({ guild, channels, client, loadMessages }) {
                 </div>
 
             </div>
-
-        </div>
+        </>
     )
 }
 
