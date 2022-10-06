@@ -1,7 +1,7 @@
 
 # Discord Bot Panel
 
-Website where you can log in as a Bot and have a similar UI like in normal Discord.
+Website where you can login as your Bot and use it to navigate through your servers and channels and chat with other people.
 This Project is being built using NextJS, Tailwindcss and mainly Typescript. 
 
 This project is made solely for my learning purposes only (so might be buggy).
@@ -17,9 +17,9 @@ TODO:
 
 * ✅ Display them on Sidebar
 
-* ❌ Categories are not collapsable
+* ✅ Display channels in correct order
 
-* ❌ Channels are in unorganized order
+* ❌ Collapsable categories
 
 
 ✅ Message input
@@ -27,8 +27,9 @@ TODO:
  * ✅ Design
 
  * ✅ Not functional
+ 
 
-🟡 Channel Chat
+✅ Channel Chat
 
 * ✅ Fetch up to 50 messages
 
@@ -36,7 +37,6 @@ TODO:
 
 * ✅ Send messages
 
-* 🟡 Make Websocket chat system flawless
 
 ❌ Voice Channel
 
@@ -48,9 +48,11 @@ TODO:
 
 * ❌ Add working Mute / Deafen  buttons
 
+🟡 UI CSS 80/100%.
+
 ## Showcase
 
-![Example 1](https://media.giphy.com/media/d302uBWgEAhVCM3ckh/giphy.gif)
+![Example 1](https://media.giphy.com/media/LKXot0tuuJ3xJ1daOe/giphy.gif)
 
 ## Environment Variables
 
