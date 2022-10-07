@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Sidebar = ({ guilds, changeGuild, client}) => {
     return (
-        <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col flex-none bg-gray-900 text-white shadow-lg overflow-y-auto no-scrollbar">
+        <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col flex-none bg-gray-900 text-white shadow-lg">
           <div id="profile-icon" className="sidebar-icon group mb-2">
             <FaRobot size="20"/>
             <span id="profile" className="sidebar-profile group-hover:scale-100">
