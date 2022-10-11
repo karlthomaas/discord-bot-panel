@@ -13,8 +13,8 @@ const Chatbar = ({payload, newMessage}) => {
   
   return (
     <>
-    <div className="w-[100%] min-w-[720px] mr-1">
-      <div className="overflow-y-scroll flex flex-none flex-col-reverse scrollbar h-[calc(100vh_-_100px)] pr-10 ">
+    <div className="w-[100%] min-w-[720px] mr-1 relative">
+      <div className="overflow-y-scroll flex flex-col-reverse scrollbar h-[calc(100vh_-_100px)] w-[98%] mb-2 ">
         { messages !== "Forbidden" &&
           messages.length > 0 &&
           messages.map((data, id:number) => {
@@ -37,14 +37,14 @@ const Message = ({ author, author_icon, content, type, timestamp,  author_id}) =
 
   return (
     <div className="message-container">
-      <div className="px-5 pt-2">
-        { author_icon == null ? <FaRegUserCircle size={30} /> : <Image src={icon_url} alt={author} height={50} width={50} className="rounded-full"></Image>}
+      <div className="px-5 pt-1 flex-none self-center">
+      { author_icon == null ? <FaRegUserCircle size={30} /> : <Image src={icon_url} alt={author} height={50} width={50} className="rounded-full"></Image>}
       </div>
       <div className="message-data">
         <div className="message-info">
         {author} | {`${date.toUTCString()}`}
         </div>
-        <div className="message-content">
+        <div className="break-all">
         {content.length == 0 ? "<embed/component>" : content}
         </div>
       </div>
