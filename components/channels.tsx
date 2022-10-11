@@ -68,7 +68,7 @@ export function Channelbar({ guild, channels, client, loadMessages }) {
             
             <div className="pl-6 pt-3 pb-3 text-white font-medium border-b-2 border-gray-900">{guild.name}</div>
             <div className="flex flex-col h-[calc(100vh_-_110px)] overflow-y-auto scrollbar">
-            {
+            {   // iterates over categories 
                 Object.keys(sorted_channels).map((category, index) => {
                     return (
                     Object.keys(sorted_channels[category].channels).map((channel_id, index2) => {
@@ -87,12 +87,34 @@ export function Channelbar({ guild, channels, client, loadMessages }) {
                 <div className="flex-row pt-2 font-semibold pl-2 text-sm">
                     <p>{client.username}</p>
                     <p className="text-gray-10">Status...</p>
-
                 </div>
-                <div className="flex ml-auto mr-3 mt-5 space-x-3">
-                    <HiMicrophone className={button_css} size={20}/>
-                    <MdHeadset className={button_css} size={20}/>
-                    <BsFillGearFill className={button_css} size={20}/>
+
+                <div className="flex ml-auto mr-3">
+                    <div className="multimedia group">
+                        <HiMicrophone size={20}/>
+                        <div className="multimedia-tooltip group-hover:scale-100 left-[-23px]">
+                            Mute
+                            <div className="multimedia-tip right-[33px]"></div>
+                        </div>
+                    </div>
+
+                    <div className="multimedia group">
+                        <MdHeadset size={20}/>
+                        <div className="multimedia-tooltip group-hover:scale-100 left-[-30px]">
+                            Deafen
+                            <div className="multimedia-tip right-[40px]"></div>
+                        </div>
+                        
+                    </div>
+                    <div className="multimedia group">
+                        <BsFillGearFill size={20}/>
+                        <div className="multimedia-tooltip group-hover:scale-100 left-[-55px]">
+                            User Settings
+                        <div className="multimedia-tip right-[60px]"></div>
+                        </div>
+                        
+                    </div>
+                    
                 </div>
 
             </div>
