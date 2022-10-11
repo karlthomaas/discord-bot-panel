@@ -17,10 +17,15 @@
   }
 
   .sidebar-tooltip {
-    @apply absolute w-auto p-2 m-2 ml-3 min-w-max left-14 rounded-md shadow-md
+    @apply absolute w-auto p-2 m-2 ml-3 min-w-max left-16 rounded-md shadow-md
     text-white bg-gray-900 
     text-xs font-bold 
     transition-all duration-100 scale-0 origin-left;
+  }
+
+  .sidebar-tip{
+    @apply absolute left-[-4px] top-[15px] h-2 w-3 bg-gray-900
+    transform rotate-45 
   }
 
   .sidebar-profile{
@@ -42,18 +47,36 @@
   }
 
   .message-container{
-    @apply flex flex-row flex-none text-white font-semibold
+    @apply flex flex-row text-white font-semibold w-full
    hover:bg-gray-600 bg-gray-25 pl-5 mt-2
   }
 
   .content-input{
-    @apply flex flex-none bottom-0
-    ml-5 mb-4 py-2 pl-7 w-[96%]
+    @apply absolute  bottom-2 flex flex-none 
+    ml-2 py-2 pl-7 w-[96%]
     items-center
     font-semibold outline-none  text-white
     rounded-md bg-gray-50
     placeholder-gray-500
   }
+
+  .multimedia{
+    @apply my-auto p-[5px] relative
+     hover:bg-gray-25 hover:rounded hover:cursor-pointer
+  }
+
+  .multimedia-tooltip{
+    @apply inline-block absolute scale-0 bg-gray-950
+    bottom-10 w-max min-w-max text-center px-5 py-1 rounded
+    font-semibold transition-all duration-100
+  }
+
+  .multimedia-tip{
+    @apply absolute bottom-[-4px] h-3 w-2 bg-gray-950 
+    transform rotate-45 
+  }
+
+
 
 }
   @layer utilities {
