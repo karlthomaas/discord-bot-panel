@@ -32,6 +32,7 @@ const SideBarIcon = ({ guild_icon, data, changeGuild}) => {
     {guild_icon == null ? <a className="sidebar-icon" onClick={() => changeGuild(data)}><FiMessageCircle size="20"/></a>: <a className="sidebar-icon" onClick={() => changeGuild(data)}><Image className="rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear cursor-pointer shadow-lg" src={guild_icon} alt={data.name} width={50} height={50}/></a>}
       <span className="sidebar-tooltip group-hover:scale-100">
         {data.name}
+        <div className="sidebar-tip"></div>
       </span>
 
 
