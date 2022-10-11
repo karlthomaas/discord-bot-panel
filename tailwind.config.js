@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         gray: {
+          950: '#18191C',
           900: '#202225',
           800: '#292b2f', // mute deafen panel
           600: '#2F3136',
